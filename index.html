@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Artist Search - JD</title>
+  <link href="./style.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.js"></script>
+</head>
+<body>
+    <main>
+      <!-- absolutely positioned container for artist background -->
+      <div class="artistBackground"></div>
+      <form id="search-form">
+          <input type="text" id="query" value="" class="form-control" placeholder="Search an Artist"/>
+          <!-- <input type="submit" id="search"/> -->
+      </form>
+      <!-- half page container for albums -->
+      <div id="albums">
+        <script id="albums-template" type="text/x-handlebars-template">
+          {{#each albums.items}}
+            {{#if _left}}
+              <div style="background-image:url({{images.0.url}})" data-album-id="{{id}}" class="album leftAlbum"></div>
+            {{/if}}
+            {{#if _center}}
+              <div style="background-image:url({{images.0.url}})" data-album-id="{{id}}" class="album centerAlbum"></div>
+            {{/if}}
+            {{#if _right}}
+              <div style="background-image:url({{images.0.url}})" data-album-id="{{id}}" class="album rightAlbum"></div>
+            {{/if}}
+          {{/each}}
+        </script>
+      </div>
+      <!-- half page container for top tracks -->
+      <div id="tracks">
+        <script id="tracks-template" type="text/x-handlebars-template">
+          {{#each tracks}}
+          <li class="track">{{name}}</li>
+          {{/each}}
+        </script>
+      </div>
+    </main>
+  <script src="./script.js"></script>
+</body>
+</html>
